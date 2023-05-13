@@ -1,9 +1,25 @@
 @echo off
 color 1f
 cd assets
-title Rayyan's Graphic Card Drivers and Gaming Drivers Installer.
-     
+echo verifying assets -
+if exist dxwebsetup.exe (
+    timeout /t 01 > nul
+) else (
+    goto fail
+)
+if exist VisualCppRedist_AIO_x86_x64.exe (
+    timeout /t 01 > nul
+) else (
+   goto fail
+)
+if exist desktop-win10-win11-64bit-international-dch-whql.exe goto begin
+
+:fail
+msg * installation failure! extract the archive to a folder before running setup
+exit 
+
 :begin
+title Rayyan's Graphic Card Drivers Installer.
 cls
 echo ----------------------------------------------------------
 echo              ______________________________
